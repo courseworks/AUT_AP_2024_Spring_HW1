@@ -479,7 +479,7 @@ int main(int argc, char **argv)
 ```
 
 <p align="center">
-  <img src="./Resource/Say_Hello_To_Other_Errors.webp" alt="Say Hello To Other Errors" style="width: 30%;">
+  <img src="./Resource/Say_Hello_To_Other_Errors.webp" alt="Say Hello To Other Errors" style="width: 40%;">
 </p>
 
 **Best Regards, Hamidi**
