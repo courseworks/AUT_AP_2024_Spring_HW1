@@ -12,7 +12,7 @@ using namespace algebra;
 // "============================================="
 
 // Test creation of zero matrix
-TEST(AUT_AP_2024_Spring_HW1, CreateZeroMatrix) {
+TEST(aut_ap_2024_spring_hw1, CreateZeroMatrix) {
 	auto matrix = create_matrix<int>(3, 3, MatrixType::Zeros);
 	for (const auto &row : matrix) {
 		for (int elem : row) {
@@ -22,7 +22,7 @@ TEST(AUT_AP_2024_Spring_HW1, CreateZeroMatrix) {
 }
 
 // Test creation of ones matrix
-TEST(AUT_AP_2024_Spring_HW1, CreateOnesMatrix) {
+TEST(aut_ap_2024_spring_hw1, CreateOnesMatrix) {
 	auto matrix = create_matrix<double>(2, 2, MatrixType::Ones);
 	for (const auto &row : matrix) {
 		for (double elem : row) {
@@ -33,7 +33,7 @@ TEST(AUT_AP_2024_Spring_HW1, CreateOnesMatrix) {
 }
 
 // Test creation of identity matrix
-TEST(AUT_AP_2024_Spring_HW1, CreateIdentityMatrix) {
+TEST(aut_ap_2024_spring_hw1, CreateIdentityMatrix) {
 	auto matrix = create_matrix<float>(4, 4, MatrixType::Identity);
 	for (size_t i = 0; i < 4; ++i) {
 		for (size_t j = 0; j < 4; ++j) {
@@ -49,12 +49,12 @@ TEST(AUT_AP_2024_Spring_HW1, CreateIdentityMatrix) {
 }
 
 // Test identity matrix requirement for square dimensions
-TEST(AUT_AP_2024_Spring_HW1, IdentityMatrixSquareRequirement) {
+TEST(aut_ap_2024_spring_hw1, IdentityMatrixSquareRequirement) {
 	EXPECT_ANY_THROW(create_matrix<int>(3, 2, MatrixType::Identity));
 }
 
 // Test creation of random matrix within bounds
-TEST(AUT_AP_2024_Spring_HW1, CreateRandomMatrixWithinBounds) {
+TEST(aut_ap_2024_spring_hw1, CreateRandomMatrixWithinBounds) {
 	auto matrix = create_matrix<double>(2, 2, MatrixType::Random, 0.0, 1.0);
 	for (const auto &row : matrix) {
 		for (double elem : row) {
@@ -65,13 +65,13 @@ TEST(AUT_AP_2024_Spring_HW1, CreateRandomMatrixWithinBounds) {
 }
 
 // Test lower bound less than upper bound for random matrix
-TEST(AUT_AP_2024_Spring_HW1, RandomMatrixBounds) {
+TEST(aut_ap_2024_spring_hw1, RandomMatrixBounds) {
 	EXPECT_ANY_THROW(create_matrix<int>(2, 2, MatrixType::Random, 5, 4));
 }
 
 // Test that an exception is thrown if only one bound is specified for random
 // matrix
-TEST(AUT_AP_2024_Spring_HW1, RandomMatrixSingleBoundSpecified) {
+TEST(aut_ap_2024_spring_hw1, RandomMatrixSingleBoundSpecified) {
 	EXPECT_ANY_THROW(
 		create_matrix<double>(2, 2, MatrixType::Random, std::nullopt, 10.0));
 	EXPECT_ANY_THROW(
@@ -79,13 +79,13 @@ TEST(AUT_AP_2024_Spring_HW1, RandomMatrixSingleBoundSpecified) {
 }
 
 // Test matrix creation with invalid dimensions
-TEST(AUT_AP_2024_Spring_HW1, InvalidDimensions) {
+TEST(aut_ap_2024_spring_hw1, InvalidDimensions) {
 	EXPECT_ANY_THROW(create_matrix<int>(0, 5, MatrixType::Zeros));
 	EXPECT_ANY_THROW(create_matrix<int>(5, 0, MatrixType::Zeros));
 }
 
 // Test for handling of the largest possible elements in random matrix
-TEST(AUT_AP_2024_Spring_HW1, RandomMatrixExtremeValues) {
+TEST(aut_ap_2024_spring_hw1, RandomMatrixExtremeValues) {
 	EXPECT_NO_THROW(create_matrix<int>(2, 2, MatrixType::Random,
 									   std::numeric_limits<int>::min(),
 									   std::numeric_limits<int>::max()));
@@ -96,7 +96,7 @@ TEST(AUT_AP_2024_Spring_HW1, RandomMatrixExtremeValues) {
 // "============================================="
 
 // Test summation of two matrices with the same dimensions
-TEST(AUT_AP_2024_Spring_HW1, SumOfMatrices) {
+TEST(aut_ap_2024_spring_hw1, SumOfMatrices) {
 	MATRIX<int> matrixA = {{1, 2}, {3, 4}};
 	MATRIX<int> matrixB = {{5, 6}, {7, 8}};
 	MATRIX<int> expected = {{6, 8}, {10, 12}};
@@ -106,7 +106,7 @@ TEST(AUT_AP_2024_Spring_HW1, SumOfMatrices) {
 }
 
 // Test subtraction of two matrices with the same dimensions
-TEST(AUT_AP_2024_Spring_HW1, SubtractionOfMatrices) {
+TEST(aut_ap_2024_spring_hw1, SubtractionOfMatrices) {
 	MATRIX<int> matrixA = {{10, 20}, {30, 40}};
 	MATRIX<int> matrixB = {{1, 2}, {3, 4}};
 	MATRIX<int> expected = {{9, 18}, {27, 36}};
@@ -116,7 +116,7 @@ TEST(AUT_AP_2024_Spring_HW1, SubtractionOfMatrices) {
 }
 
 // Test for dimension mismatch
-TEST(AUT_AP_2024_Spring_HW1, DimensionMismatch) {
+TEST(aut_ap_2024_spring_hw1, DimensionMismatch) {
 	MATRIX<int> matrixA = {{1, 2, 3}, {4, 5, 6}};
 	MATRIX<int> matrixB = {{1, 2}, {3, 4}, {5, 6}};
 
@@ -127,7 +127,7 @@ TEST(AUT_AP_2024_Spring_HW1, DimensionMismatch) {
 }
 
 // Test operation parameter with invalid value defaults to sum
-TEST(AUT_AP_2024_Spring_HW1, InvalidOperationParameter) {
+TEST(aut_ap_2024_spring_hw1, InvalidOperationParameter) {
 	MATRIX<int> matrixA = {{1, 2}, {3, 4}};
 	MATRIX<int> matrixB = {{5, 6}, {7, 8}};
 	MATRIX<int> expectedSum = {{6, 8}, {10, 12}};
@@ -139,7 +139,7 @@ TEST(AUT_AP_2024_Spring_HW1, InvalidOperationParameter) {
 }
 
 // Test empty matrices
-TEST(AUT_AP_2024_Spring_HW1, EmptyMatrices) {
+TEST(aut_ap_2024_spring_hw1, EmptyMatrices) {
 	MATRIX<int> matrixA = {};
 	MATRIX<int> matrixB = {};
 	MATRIX<int> expected = {};
@@ -152,7 +152,7 @@ TEST(AUT_AP_2024_Spring_HW1, EmptyMatrices) {
 }
 
 // Test single element matrices
-TEST(AUT_AP_2024_Spring_HW1, SingleElementMatrices) {
+TEST(aut_ap_2024_spring_hw1, SingleElementMatrices) {
 	MATRIX<int> matrixA = {{5}};
 	MATRIX<int> matrixB = {{3}};
 	MATRIX<int> expectedSum = {{8}};
@@ -172,7 +172,7 @@ TEST(AUT_AP_2024_Spring_HW1, SingleElementMatrices) {
 // "============================================="
 
 // Test scalar multiplication
-TEST(AUT_AP_2024_Spring_HW1, ScalarMultiplication) {
+TEST(aut_ap_2024_spring_hw1, ScalarMultiplication) {
 	MATRIX<int> mat = {{1, 2}, {3, 4}};
 	int scalar = 3;
 	MATRIX<int> expected = {{3, 6}, {9, 12}};
@@ -182,7 +182,7 @@ TEST(AUT_AP_2024_Spring_HW1, ScalarMultiplication) {
 }
 
 // Test matrix multiplication with valid dimensions
-TEST(AUT_AP_2024_Spring_HW1, ValidMatrixMultiplication) {
+TEST(aut_ap_2024_spring_hw1, ValidMatrixMultiplication) {
 	MATRIX<int> matrixA = {{1, 2, 3}, {4, 5, 6}};
 	MATRIX<int> matrixB = {{7, 8}, {9, 10}, {11, 12}};
 	MATRIX<int> expected = {{58, 64}, {139, 154}};
@@ -192,7 +192,7 @@ TEST(AUT_AP_2024_Spring_HW1, ValidMatrixMultiplication) {
 }
 
 // Test matrix multiplication with dimension mismatch
-TEST(AUT_AP_2024_Spring_HW1, DimensionMismatchMatrixMultiplication) {
+TEST(aut_ap_2024_spring_hw1, DimensionMismatchMatrixMultiplication) {
 	MATRIX<int> matrixA = {{1, 2}, {3, 4}};
 	MATRIX<int> matrixB = {{5, 6}, {7, 8}, {9, 10}};
 
@@ -201,7 +201,7 @@ TEST(AUT_AP_2024_Spring_HW1, DimensionMismatchMatrixMultiplication) {
 }
 
 // Test scalar multiplication with zero scalar
-TEST(AUT_AP_2024_Spring_HW1, ZeroScalarMultiplication) {
+TEST(aut_ap_2024_spring_hw1, ZeroScalarMultiplication) {
 	MATRIX<int> mat = {{1, 2}, {3, 4}};
 	int scalar = 0;
 	MATRIX<int> expected = {{0, 0}, {0, 0}};
@@ -211,7 +211,7 @@ TEST(AUT_AP_2024_Spring_HW1, ZeroScalarMultiplication) {
 }
 
 // Test matrix multiplication with identity matrix
-TEST(AUT_AP_2024_Spring_HW1, IdentityMatrixMultiplication) {
+TEST(aut_ap_2024_spring_hw1, IdentityMatrixMultiplication) {
 	MATRIX<int> matrixA = {{1, 2}, {3, 4}};
 	MATRIX<int> identity = {{1, 0}, {0, 1}};
 	MATRIX<int> expected = matrixA; // Multiplying by identity matrix should
@@ -223,7 +223,7 @@ TEST(AUT_AP_2024_Spring_HW1, IdentityMatrixMultiplication) {
 }
 
 // Test scalar multiplication with negative scalar
-TEST(AUT_AP_2024_Spring_HW1, NegativeScalarMultiplication) {
+TEST(aut_ap_2024_spring_hw1, NegativeScalarMultiplication) {
 	MATRIX<int> mat = {{1, 2}, {3, 4}};
 	int scalar = -3;
 	MATRIX<int> expected = {{-3, -6}, {-9, -12}};
@@ -234,7 +234,7 @@ TEST(AUT_AP_2024_Spring_HW1, NegativeScalarMultiplication) {
 }
 
 // Test empty matrix with scalar multiplication
-TEST(AUT_AP_2024_Spring_HW1, ScalarMultiplicationEmptyMatrix) {
+TEST(aut_ap_2024_spring_hw1, ScalarMultiplicationEmptyMatrix) {
 	MATRIX<int> mat = {};
 	int scalar = 5;
 	MATRIX<int> expected = {};
@@ -245,7 +245,7 @@ TEST(AUT_AP_2024_Spring_HW1, ScalarMultiplicationEmptyMatrix) {
 }
 
 // Test empty matrices with matrix multiplication
-TEST(AUT_AP_2024_Spring_HW1, MatrixMultiplicationEmptyMatrices) {
+TEST(aut_ap_2024_spring_hw1, MatrixMultiplicationEmptyMatrices) {
 	MATRIX<int> matrixA = {};
 	MATRIX<int> matrixB = {};
 	MATRIX<int> expected = {};
@@ -259,7 +259,7 @@ TEST(AUT_AP_2024_Spring_HW1, MatrixMultiplicationEmptyMatrices) {
 // "============================================="
 
 // Test Hadamard Product of two matrices with the same dimensions
-TEST(AUT_AP_2024_Spring_HW1, ValidHadamardProduct) {
+TEST(aut_ap_2024_spring_hw1, ValidHadamardProduct) {
 	MATRIX<int> matA = {{1, 2, 3}, {4, 5, 6}};
 	MATRIX<int> matB = {{7, 8, 9}, {10, 11, 12}};
 	MATRIX<int> expected = {{7, 16, 27}, {40, 55, 72}};
@@ -269,7 +269,7 @@ TEST(AUT_AP_2024_Spring_HW1, ValidHadamardProduct) {
 }
 
 // Test Hadamard Product with dimension mismatch
-TEST(AUT_AP_2024_Spring_HW1, DimensionMismatch) {
+TEST(aut_ap_2024_spring_hw1, DimensionMismatch) {
 	MATRIX<int> matA = {{1, 2, 3}};
 	MATRIX<int> matB = {{4, 5}, {6, 7}};
 
@@ -278,7 +278,7 @@ TEST(AUT_AP_2024_Spring_HW1, DimensionMismatch) {
 }
 
 // Test Hadamard Product with empty matrices
-TEST(AUT_AP_2024_Spring_HW1, EmptyMatrices) {
+TEST(aut_ap_2024_spring_hw1, EmptyMatrices) {
 	MATRIX<int> matA = {};
 	MATRIX<int> matB = {};
 
@@ -289,7 +289,7 @@ TEST(AUT_AP_2024_Spring_HW1, EmptyMatrices) {
 }
 
 // Test Hadamard Product for matrices with a single element
-TEST(AUT_AP_2024_Spring_HW1, SingleElementMatrices) {
+TEST(aut_ap_2024_spring_hw1, SingleElementMatrices) {
 	MATRIX<int> matA = {{2}};
 	MATRIX<int> matB = {{3}};
 	MATRIX<int> expected = {{6}};
@@ -300,7 +300,7 @@ TEST(AUT_AP_2024_Spring_HW1, SingleElementMatrices) {
 }
 
 // Test Hadamard Product for negative values
-TEST(AUT_AP_2024_Spring_HW1, NegativeValues) {
+TEST(aut_ap_2024_spring_hw1, NegativeValues) {
 	MATRIX<int> matA = {{-1, -2}, {-3, -4}};
 	MATRIX<int> matB = {{5, 6}, {7, 8}};
 	MATRIX<int> expected = {{-5, -12}, {-21, -32}};
@@ -311,7 +311,7 @@ TEST(AUT_AP_2024_Spring_HW1, NegativeValues) {
 }
 
 // Test Hadamard Product with zero values in matrices
-TEST(AUT_AP_2024_Spring_HW1, ZeroValues) {
+TEST(aut_ap_2024_spring_hw1, ZeroValues) {
 	MATRIX<int> matA = {{0, 2}, {3, 0}};
 	MATRIX<int> matB = {{4, 0}, {0, 5}};
 	MATRIX<int> expected = {{0, 0}, {0, 0}};
@@ -325,7 +325,7 @@ TEST(AUT_AP_2024_Spring_HW1, ZeroValues) {
 // "============================================="
 
 // Test transposing a square matrix
-TEST(AUT_AP_2024_Spring_HW1, TransposeSquareMatrix) {
+TEST(aut_ap_2024_spring_hw1, TransposeSquareMatrix) {
 	MATRIX<int> mat = {{1, 2}, {3, 4}};
 	MATRIX<int> expected = {{1, 3}, {2, 4}};
 
@@ -334,7 +334,7 @@ TEST(AUT_AP_2024_Spring_HW1, TransposeSquareMatrix) {
 }
 
 // Test transposing a non-square matrix
-TEST(AUT_AP_2024_Spring_HW1, TransposeNonSquareMatrix) {
+TEST(aut_ap_2024_spring_hw1, TransposeNonSquareMatrix) {
 	MATRIX<int> mat = {{1, 2, 3}, {4, 5, 6}};
 	MATRIX<int> expected = {{1, 4}, {2, 5}, {3, 6}};
 
@@ -343,7 +343,7 @@ TEST(AUT_AP_2024_Spring_HW1, TransposeNonSquareMatrix) {
 }
 
 // Test transposing an empty matrix
-TEST(AUT_AP_2024_Spring_HW1, TransposeEmptyMatrix) {
+TEST(aut_ap_2024_spring_hw1, TransposeEmptyMatrix) {
 	MATRIX<int> mat = {};
 	MATRIX<int> expected = {};
 
@@ -353,7 +353,7 @@ TEST(AUT_AP_2024_Spring_HW1, TransposeEmptyMatrix) {
 }
 
 // Test transposing a matrix with one row
-TEST(AUT_AP_2024_Spring_HW1, TransposeSingleRow) {
+TEST(aut_ap_2024_spring_hw1, TransposeSingleRow) {
 	MATRIX<int> mat = {{1, 2, 3}};
 	MATRIX<int> expected = {{1}, {2}, {3}};
 
@@ -362,7 +362,7 @@ TEST(AUT_AP_2024_Spring_HW1, TransposeSingleRow) {
 }
 
 // Test transposing a matrix with one column
-TEST(AUT_AP_2024_Spring_HW1, TransposeSingleColumn) {
+TEST(aut_ap_2024_spring_hw1, TransposeSingleColumn) {
 	MATRIX<int> mat = {{1}, {2}, {3}};
 	MATRIX<int> expected = {{1, 2, 3}};
 
@@ -376,7 +376,7 @@ TEST(AUT_AP_2024_Spring_HW1, TransposeSingleColumn) {
 // "============================================="
 
 // Test calculating the trace of a square matrix
-TEST(MatrixTraceTest, ValidSquareMatrix) {
+TEST(aut_ap_2024_spring_hw1, ValidSquareMatrix) {
 	MATRIX<int> mat = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
 	int expectedTrace = 15;
 
@@ -386,7 +386,7 @@ TEST(MatrixTraceTest, ValidSquareMatrix) {
 }
 
 // Test calculating the trace of a non-square matrix throws error
-TEST(MatrixTraceTest, NonSquareMatrix) {
+TEST(aut_ap_2024_spring_hw1, NonSquareMatrix) {
 	MATRIX<int> mat = {{1, 2, 3}, {4, 5, 6}};
 
 	EXPECT_ANY_THROW(trace(mat))
@@ -394,7 +394,7 @@ TEST(MatrixTraceTest, NonSquareMatrix) {
 }
 
 // Test calculating the trace of an empty matrix
-TEST(MatrixTraceTest, EmptyMatrix) {
+TEST(aut_ap_2024_spring_hw1, EmptyMatrix) {
 	MATRIX<int> mat = {};
 
 	EXPECT_ANY_THROW(trace(mat))
@@ -402,7 +402,7 @@ TEST(MatrixTraceTest, EmptyMatrix) {
 }
 
 // Test calculating the trace of a single element matrix
-TEST(MatrixTraceTest, SingleElementMatrix) {
+TEST(aut_ap_2024_spring_hw1, SingleElementMatrix) {
 	MATRIX<int> mat = {{42}};
 	int expectedTrace = 42;
 
@@ -416,7 +416,7 @@ TEST(MatrixTraceTest, SingleElementMatrix) {
 // "============================================="
 
 // Test calculating the determinant of a 2x2 square matrix
-TEST(MatrixDeterminantTest, Determinant2x2Matrix) {
+TEST(aut_ap_2024_spring_hw1, Determinant2x2Matrix) {
 	MATRIX<double> mat = {{4, 3}, {6, 3}};
 	double expectedDet = -6.0;
 
@@ -426,7 +426,7 @@ TEST(MatrixDeterminantTest, Determinant2x2Matrix) {
 }
 
 // Test calculating the determinant of a larger square matrix
-TEST(MatrixDeterminantTest, DeterminantLargerMatrix) {
+TEST(aut_ap_2024_spring_hw1, DeterminantLargerMatrix) {
 	// Example for a 3x3 matrix
 	MATRIX<double> mat = {{1, 2, 3}, {0, 1, 4}, {5, 6, 0}};
 	// The expected determinant can be calculated manually or using a reliable
@@ -439,7 +439,7 @@ TEST(MatrixDeterminantTest, DeterminantLargerMatrix) {
 }
 
 // Test calculating the determinant of a non-square matrix throws error
-TEST(MatrixDeterminantTest, NonSquareMatrix) {
+TEST(aut_ap_2024_spring_hw1, NonSquareMatrix) {
 	MATRIX<double> mat = {{1, 2, 3}, {4, 5, 6}};
 
 	EXPECT_ANY_THROW(determinant(mat))
@@ -448,7 +448,7 @@ TEST(MatrixDeterminantTest, NonSquareMatrix) {
 }
 
 // Test calculating the determinant of an empty matrix
-TEST(MatrixDeterminantTest, EmptyMatrix) {
+TEST(aut_ap_2024_spring_hw1, EmptyMatrix) {
 	MATRIX<double> mat = {};
 
 	EXPECT_ANY_THROW(determinant(mat))
@@ -456,7 +456,7 @@ TEST(MatrixDeterminantTest, EmptyMatrix) {
 }
 
 // Test calculating the determinant of a single element matrix
-TEST(MatrixDeterminantTest, SingleElementMatrix) {
+TEST(aut_ap_2024_spring_hw1, SingleElementMatrix) {
 	MATRIX<double> mat = {{42}};
 	double expectedDet = 42;
 
@@ -470,7 +470,7 @@ TEST(MatrixDeterminantTest, SingleElementMatrix) {
 // "============================================="
 
 // Test calculating the inverse of a 2x2 square matrix
-TEST(MatrixInverseTest, Inverse2x2Matrix) {
+TEST(aut_ap_2024_spring_hw1, Inverse2x2Matrix) {
 	MATRIX<double> mat = {{4, 7}, {2, 6}};
 	MATRIX<double> expectedInv = {{0.6, -0.7}, {-0.2, 0.4}};
 
@@ -485,7 +485,7 @@ TEST(MatrixInverseTest, Inverse2x2Matrix) {
 }
 
 // Test error handling for a non-square matrix
-TEST(MatrixInverseTest, NonSquareMatrix) {
+TEST(aut_ap_2024_spring_hw1, NonSquareMatrix) {
 	MATRIX<double> mat = {{1, 2, 3}, {4, 5, 6}};
 
 	EXPECT_ANY_THROW(inverse(mat))
@@ -493,7 +493,7 @@ TEST(MatrixInverseTest, NonSquareMatrix) {
 }
 
 // Test error handling for a matrix with zero determinant
-TEST(MatrixInverseTest, ZeroDeterminant) {
+TEST(aut_ap_2024_spring_hw1, ZeroDeterminant) {
 	MATRIX<double> mat = {{1, 2}, {2, 4}}; // This matrix has a determinant of 0
 
 	EXPECT_ANY_THROW(inverse(mat))
@@ -502,7 +502,7 @@ TEST(MatrixInverseTest, ZeroDeterminant) {
 }
 
 // Test calculating the inverse of an empty matrix
-TEST(MatrixInverseTest, EmptyMatrix) {
+TEST(aut_ap_2024_spring_hw1, EmptyMatrix) {
 	MATRIX<double> mat = {};
 
 	EXPECT_ANY_THROW(inverse(mat))
