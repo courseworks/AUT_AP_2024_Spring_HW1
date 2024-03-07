@@ -431,7 +431,7 @@ TEST(AutAp2024SpringHW1, determinant_DeterminantLargerMatrix) {
 	MATRIX<double> mat = {{1, 2, 3}, {0, 1, 4}, {5, 6, 0}};
 	// The expected determinant can be calculated manually or using a reliable
 	// tool
-	double expectedDet = -1.0;
+	double expectedDet = 1.0;
 
 	auto result = determinant(mat);
 	EXPECT_NEAR(result, expectedDet, 1e-6)
