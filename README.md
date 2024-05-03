@@ -482,4 +482,4 @@ int main(int argc, char **argv)
   <img src="./Resource/Say_Hello_To_Other_Errors.webp" alt="Say Hello To Other Errors" style="width: 40%;">
 </p>
 
-**Best Regards, Hamidi**
+**Best Regards, [Hamidi](https://github.com/smhamidi)**
